@@ -50,7 +50,7 @@ jobs:
     - name: Download Bowler kernel into CI
       run: wget https://github.com/CommonWealthRobotics/bowler-script-kernel/releases/latest/download/bowler-kernel.jar
       
-    - name: Compile three-eighths spacers
+    - name: Compile Script
       run: java -jar bowler-kernel.jar -f ${{ inputs.filelocation }}
       
     - name: Archive Release
