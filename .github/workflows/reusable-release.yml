@@ -1,11 +1,17 @@
-name: "Release"
-on: 
-   push:
-       tags:       
-         - '*'
+name: Reusable workflow example
+
+on:
+  workflow_call:
+    inputs:
+      filename:
+        required: true
+        type: string
+      filelocation:
+        required: true
+        type: string
 
 jobs:
-  release:
+   reusable_workflow_job:
 
     runs-on: ubuntu-latest
 
@@ -45,7 +51,15 @@ jobs:
       run: wget https://github.com/CommonWealthRobotics/bowler-script-kernel/releases/latest/download/bowler-kernel.jar
       
     - name: Compile three-eighths spacers
-      run: java -jar bowler-kernel.jar -f Printbed-three-eighths-inch-Spacer.groovy
+      run: java -jar bowler-kernel.jar -f ${{ inputs.filelocation }}
+      
+    - name: Archive Release
+      uses: thedoctor0/zip-release@master
+      with:
+        type: 'zip'
+        path: 'manufacturing'
+        filename: '${{ inputs.filename }}.zip'
+        exclusions: '*.git* /*node_modules/* .editorconfig'
 
     - name: three-eighths spacer STL
       uses: actions/upload-release-asset@v1
@@ -53,6 +67,6 @@ jobs:
             GITHUB_TOKEN: ${{ github.token }}
       with:
             upload_url: ${{ steps.create_release.outputs.upload_url }}
-            asset_path: Printbed-three-eighths-inch-Spacer.stl
-            asset_name: Printbed-three-eighths-inch-Spacer.stl
+            asset_path: ${{ inputs.filename }}.zip
+            asset_name: ${{ inputs.filename }}.zip
             asset_content_type: application/binary
