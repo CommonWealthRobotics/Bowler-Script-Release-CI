@@ -1,3 +1,7 @@
+import eu.mihosoft.vrl.v3d.CSG
+import eu.mihosoft.vrl.v3d.Cylinder
+import eu.mihosoft.vrl.v3d.Hexagon
+
 CSG simpleSyntax =new Cylinder(10,40).toCSG() // a one line Cylinder
 
 //create a Cylinder

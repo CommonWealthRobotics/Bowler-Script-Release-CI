@@ -1,6 +1,9 @@
-/.settings
+.settings
 /.project
 /.classpath
 /.cproject
 /cache/
 /*.class
+/
+.settings
+/
