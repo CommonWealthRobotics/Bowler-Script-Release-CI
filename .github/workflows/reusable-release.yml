@@ -61,7 +61,7 @@ jobs:
       with:
         type: 'zip'
         path: 'manufacturing'
-        filename: '${{ inputs.filename }}-${{ github.ref }}.zip'
+        filename: '${{ inputs.filename }}-${{  steps.version.outputs.version  }}.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
     - name: Show Build
       run: ls -al .
@@ -83,6 +83,6 @@ jobs:
             GITHUB_TOKEN: ${{ github.token }}
       with:
             upload_url: ${{ steps.create_release.outputs.upload_url }}
-            asset_path: ${{ inputs.filename }}-${{ github.ref }}.zip
-            asset_name: ${{ inputs.filename }}-${{ github.ref }}.zip
+            asset_path: ${{ inputs.filename }}-${{  steps.version.outputs.version  }}.zip
+            asset_name: ${{ inputs.filename }}-${{  steps.version.outputs.version  }}.zip
             asset_content_type: application/binary
