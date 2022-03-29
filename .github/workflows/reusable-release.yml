@@ -60,8 +60,21 @@ jobs:
         path: 'manufacturing'
         filename: '${{ inputs.filename }}.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
-
-    - name: three-eighths spacer STL
+    - name: Show Build
+      run: ls -al .
+         
+    - name: release
+      uses: actions/create-release@v1
+      id: create_release
+      with:
+            draft: false
+            prerelease: false
+            release_name: ${{ steps.version.outputs.version }}
+            tag_name: ${{ github.ref }}
+      env:
+            GITHUB_TOKEN: ${{ github.token }}
+            
+    - name: Upload Zip of Build Artifacts
       uses: actions/upload-release-asset@v1
       env:
             GITHUB_TOKEN: ${{ github.token }}
