@@ -25,15 +25,18 @@ jobs:
       run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}   
       
     - name: Print Home
-      run: echo $HOME    
+      run: echo $HOME 
+    - name: Print Workspace
+      run: echo $PWD       
     - name: Link source Into Workspace 1
       run: mkdir -p $HOME/bowler-workspace/gitcache/github.com/${{ github.repository_owner }}/
     - name: Link source Into Workspace 2
       run: ln -s ../${{ github.event.repository.name }}/ $HOME/bowler-workspace/gitcache/github.com/${{ github.repository_owner }}/
     - name: Link source Into Workspace 3
       run: ls -al $HOME/bowler-workspace/gitcache/github.com/
-      
     - name: Link source Into Workspace 4
+      run: ls -al $HOME/bowler-workspace/gitcache/github.com/${{ github.repository_owner }}/ 
+    - name: Link source Into Workspace 5
       run: ls -al $HOME/bowler-workspace/gitcache/github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/
       
     - name: Install libraries
