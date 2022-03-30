@@ -23,6 +23,8 @@ jobs:
     - name: Get the version
       id: get_version
       run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}   
+      
+      
     - name: Link source Into Workspace
       run: |
           mkdir -p $HOME/bowler-workspace/gitcache/github.com/${{ github.repository_owner }}/
