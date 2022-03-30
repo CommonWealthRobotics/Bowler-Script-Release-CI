@@ -23,7 +23,6 @@ jobs:
     - name: Get the version
       id: get_version
       run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}   
-      
     - name: Print Home
       run: echo $HOME 
     - name: Print Workspace
