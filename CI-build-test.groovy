@@ -24,4 +24,6 @@ CSG hex = new Hexagon(	20, // Flat to flat radius
                       		).toCSG()//convert to CSG to display                    			 
                       		.movex(50)
                       		.movey(50)
+hex.setName("Hexagon")
+hex.addExportFormat("svg")							  
  return [simpleSyntax,myCylinder ,pyramid,hex]
