@@ -1,4 +1,4 @@
-name: Reusable workflow example
+name: Build and Release Bowler Script
 
 on:
   workflow_call:

@@ -5,8 +5,8 @@ on:
          - '*'
 
 jobs:
-  call-workflow-passing-data:
-    uses: CommonWealthRobotics/Bowler-Script-Release-CI/.github/workflows/reusable-release.yml@main
+  call-build-release:
+    uses: reusable-release.yml
     with:
       filename: "CI-build-test-groovy-archive"
       filelocation: "./CI-build-test.groovy"   
