@@ -105,8 +105,7 @@ jobs:
             asset_path: ${{ inputs.filename }}-${{ steps.get_version.outputs.VERSION }}.zip
             asset_name: ${{ inputs.filename }}-${{ steps.get_version.outputs.VERSION }}.zip
             asset_content_type: application/binary
-
-     - name: Store URL
-         id: storeURLStep
-         run: echo "::set-output name=outputURL::https://github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/releases/download/${{ steps.get_version.outputs.VERSION }}/${{ inputs.filename }}-${{ steps.get_version.outputs.VERSION }}.zip"   
+    - name: Store URL
+      id: storeURLStep
+      run: echo "::set-output name=outputURL::https://github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/releases/download/${{ steps.get_version.outputs.VERSION }}/${{ inputs.filename }}-${{ steps.get_version.outputs.VERSION }}.zip"   
    
