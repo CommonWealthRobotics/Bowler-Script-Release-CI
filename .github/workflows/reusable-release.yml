@@ -14,7 +14,8 @@ jobs:
    reusable_workflow_job:
 
     runs-on: ubuntu-latest
-
+    outputs:
+            outputURL: https://github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/releases/download/${{ steps.get_version.outputs.VERSION }}/${{ inputs.filename }}-${{ steps.get_version.outputs.VERSION }}.zip 
     steps:
     - name: Checkout repository and submodules
       uses: actions/checkout@v2
@@ -94,8 +95,6 @@ jobs:
             
     - name: Upload Zip of Build Artifacts
       uses: actions/upload-release-asset@v1
-      outputs:
-            outputURL: https://github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/releases/download/${{ steps.get_version.outputs.VERSION }}/${{ inputs.filename }}-${{ steps.get_version.outputs.VERSION }}.zip
       env:
             GITHUB_TOKEN: ${{ github.token }}
       with:
