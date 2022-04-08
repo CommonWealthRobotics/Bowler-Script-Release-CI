@@ -5,8 +5,13 @@ on:
          - '*'
 
 jobs:
+  call-build:
+    uses: CommonWealthRobotics/Bowler-Script-Release-CI/.github/workflows/build.yml@feature/returnpath
+    with:
+      filelocation: "./CI-build-test.groovy"  
   call-build-release:
     uses: CommonWealthRobotics/Bowler-Script-Release-CI/.github/workflows/reusable-release.yml@feature/returnpath
+    needs: call-build
     with:
       filename: "CI-build-test-groovy-archive"
       filelocation: "./CI-build-test.groovy"   
