@@ -14,9 +14,7 @@ jobs:
    reusable_workflow_job:
 
     runs-on: ubuntu-latest
-    outputs:
-            outputURL: https://github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/releases/download/${{ steps.get_version.outputs.VERSION }}/${{ inputs.filename }}-${{ steps.get_version.outputs.VERSION }}.zip 
-    steps:
+   steps:
     - name: Checkout repository and submodules
       uses: actions/checkout@v2
       with:
@@ -102,3 +100,8 @@ jobs:
             asset_path: ${{ inputs.filename }}-${{ steps.get_version.outputs.VERSION }}.zip
             asset_name: ${{ inputs.filename }}-${{ steps.get_version.outputs.VERSION }}.zip
             asset_content_type: application/binary
+   set_outputs:
+    runs-on: ubuntu-latest
+    outputs:
+            outputURL: https://github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/releases/download/${{ steps.get_version.outputs.VERSION }}/${{ inputs.filename }}-${{ steps.get_version.outputs.VERSION }}.zip 
+   
