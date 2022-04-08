@@ -7,7 +7,6 @@ on:
 jobs:
   call-release:
     uses: CommonWealthRobotics/Bowler-Script-Release-CI/.github/workflows/reusable-release.yml@main
-    needs: call-build
     with:
       filename: "CI-build-test-groovy-archive"
       filelocation: "./CI-build-test.groovy"   
