@@ -10,7 +10,9 @@ on:
         required: true
         type: string
     outputs:
-            outputURL: https://github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/releases/download/${{ steps.get_version.outputs.VERSION }}/${{ inputs.filename }}-${{ steps.get_version.outputs.VERSION }}.zip
+            outputURL:
+              description: "The URL of upload" 
+              value: https://github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/releases/download/${{ steps.get_version.outputs.VERSION }}/${{ inputs.filename }}-${{ steps.get_version.outputs.VERSION }}.zip
    
 jobs:
    reusable_workflow_job:
