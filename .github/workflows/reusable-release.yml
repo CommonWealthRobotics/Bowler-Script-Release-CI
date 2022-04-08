@@ -16,7 +16,7 @@ on:
    
 jobs:
    build:
-      uses: CommonWealthRobotics/Bowler-Script-Release-CI/.github/workflows/reusable-release.yml@feature/returnpath
+      uses: CommonWealthRobotics/Bowler-Script-Release-CI/.github/workflows/build.yml@feature/returnpath
       with:
          filelocation:  ${{ inputs.filelocation }} 
    reusable_workflow_job:
