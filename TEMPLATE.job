@@ -10,7 +10,7 @@ jobs:
   call-release:
     uses: CommonWealthRobotics/Bowler-Script-Release-CI/.github/workflows/reusable-release.yml@main
     with:
-      filename: "FILENAME_REPLACE"
+      filename: "JOBNAME_REPLACE"
       filelocation: "./FILENAME_REPLACE"   
   use-url-job:
     runs-on: ubuntu-latest
