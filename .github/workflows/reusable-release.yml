@@ -32,15 +32,15 @@ jobs:
     - name: Print Workspace
       run: echo $PWD       
     - name: Link source Into Workspace 1
-      run: mkdir -p $HOME/bowler-workspace/gitcache/github.com/${{ github.repository_owner }}/
+      run: mkdir -p $HOME/Documents/bowler-workspace/gitcache/github.com/${{ github.repository_owner }}/
     - name: Link source Into Workspace 2
-      run: ln -s $PWD $HOME/bowler-workspace/gitcache/github.com/${{ github.repository_owner }}/
+      run: ln -s $PWD $HOME/Documents/bowler-workspace/gitcache/github.com/${{ github.repository_owner }}/
     - name: Link source Into Workspace 3
-      run: ls -al $HOME/bowler-workspace/gitcache/github.com/
+      run: ls -al $HOME/Documents/bowler-workspace/gitcache/github.com/
     - name: Link source Into Workspace 4
-      run: ls -al $HOME/bowler-workspace/gitcache/github.com/${{ github.repository_owner }}/ 
+      run: ls -al $HOME/Documents/bowler-workspace/gitcache/github.com/${{ github.repository_owner }}/ 
     - name: Link source Into Workspace 5
-      run: ls -al $HOME/bowler-workspace/gitcache/github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/
+      run: ls -al $HOME/Documents/bowler-workspace/gitcache/github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/
       
     - name: Install libraries
       run: |
