@@ -73,7 +73,7 @@ jobs:
       run: wget https://github.com/CommonWealthRobotics/bowler-script-kernel/releases/latest/download/bowler-kernel.jar
       
     - name: Compile Script
-      run: xvfb-run -s '-screen 0 1024x768x24' java -Dprism.verbose=true -Dprism.forceGPU=true -d64 -Xmx6500M -jar bowler-kernel.jar -f ${{ inputs.filelocation }}
+      run: xvfb-run -s '-screen 0 1024x768x24' java -Dprism.verbose=true -Dprism.forceGPU=true -d64 -Xmx6500M -jar bowler-kernel.jar -f "${{ inputs.filelocation }}"
       
     - name: Archive Release
       uses: thedoctor0/zip-release@master
