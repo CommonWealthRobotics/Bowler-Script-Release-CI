@@ -80,7 +80,7 @@ jobs:
       with:
         type: 'zip'
         path: 'manufacturing'
-        filename: "${{ inputs.filename }}-${{ steps.get_version.outputs.VERSION }}.zip"
+        filename: "${{ inputs..replace(' ', '-') }}-${{ steps.get_version.outputs.VERSION }}.zip"
         exclusions: '*.git* /*node_modules/* .editorconfig'
     - name: Show Build
       run: ls -al .
@@ -102,8 +102,8 @@ jobs:
             GITHUB_TOKEN: ${{ github.token }}
       with:
             upload_url: ${{ steps.create_release.outputs.upload_url }}
-            asset_path: "${{ inputs.filename }}-${{ steps.get_version.outputs.VERSION }}.zip"
-            asset_name: "${{ inputs.filename }}-${{ steps.get_version.outputs.VERSION }}.zip"
+            asset_path: "${{ inputs..replace(' ', '-') }}-${{ steps.get_version.outputs.VERSION }}.zip"
+            asset_name: "${{ inputs..replace(' ', '-') }}-${{ steps.get_version.outputs.VERSION }}.zip"
             asset_content_type: application/binary
     - name: Store URL
       id: storeURLStep
