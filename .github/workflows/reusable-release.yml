@@ -74,13 +74,18 @@ jobs:
       
     - name: Compile Script
       run: xvfb-run -s '-screen 0 1024x768x24' java -Dprism.verbose=true -Dprism.forceGPU=true -d64 -Xmx6500M -jar bowler-kernel.jar -f "${{ inputs.filelocation }}"
-      
+    - name: Setup filename without spaces      
+      run: |
+       FILENAME="${{ inputs.filename }}"
+       FILENAME=${FILENAME// /-}  # Replace all spaces with hyphens
+       echo "CLEAN_FILENAME=$FILENAME" >> $GITHUB_ENV
+
     - name: Archive Release
       uses: thedoctor0/zip-release@master
       with:
         type: 'zip'
         path: 'manufacturing'
-        filename: "${{ inputs.filename.replace(' ', '-') }}-${{ steps.get_version.outputs.VERSION }}.zip"
+        filename: "${{ env.CLEAN_FILENAME }}-${{ steps.get_version.outputs.VERSION }}.zip"
         exclusions: '*.git* /*node_modules/* .editorconfig'
     - name: Show Build
       run: ls -al .
@@ -102,8 +107,8 @@ jobs:
             GITHUB_TOKEN: ${{ github.token }}
       with:
             upload_url: ${{ steps.create_release.outputs.upload_url }}
-            asset_path: "${{ inputs.filename.replace(' ', '-') }}-${{ steps.get_version.outputs.VERSION }}.zip"
-            asset_name: "${{ inputs.filename.replace(' ', '-') }}-${{ steps.get_version.outputs.VERSION }}.zip"
+            asset_path: "${{ env.CLEAN_FILENAME }}-${{ steps.get_version.outputs.VERSION }}.zip"
+            asset_name: "${{ env.CLEAN_FILENAME }}-${{ steps.get_version.outputs.VERSION }}.zip"
             asset_content_type: application/binary
     - name: Store URL
       id: storeURLStep
